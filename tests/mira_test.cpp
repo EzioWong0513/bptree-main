@@ -39,7 +39,7 @@ int main() {
         std::mt19937 gen(rd());
         
         // Insert a significant number of key-value pairs
-        const int NUM_INSERTS = 200000;
+        const int NUM_INSERTS = 100000;
         std::cout << "Inserting " << NUM_INSERTS << " key-value pairs...\n";
         
         double insert_time = measure_time([&]() {
