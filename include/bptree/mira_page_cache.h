@@ -122,7 +122,13 @@ public:
     
     // Handle memory pressure explicitly
     void evict_pages_under_pressure(size_t num_pages_to_free);
-
+	
+	// Methods for accessing cache statistics (for benchmarking)
+	uint64_t get_hits() const { return stats.hits.load(); }
+	uint64_t get_misses() const { return stats.misses.load(); }
+	uint64_t get_promotions() const { return stats.promotes.load(); } 
+	uint64_t get_demotions() const { return stats.demotes.load(); }
+	uint64_t get_evictions() const { return stats.evictions.load(); }
 private:
     std::unique_ptr<HeapFile> heap_file;
     size_t page_size;
