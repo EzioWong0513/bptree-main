@@ -168,20 +168,12 @@ private:
     // Cache management
     MiraPage* find_in_hot_cache(PageID id);
     MiraPage* find_in_cold_cache(PageID id);
-    
-    // Original cache modification methods
     void insert_to_hot_cache(std::unique_ptr<MiraPage> mira_page);
     void insert_to_cold_cache(std::unique_ptr<MiraPage> mira_page);
     bool evict_from_hot_cache(PageID& victim_id);
     bool evict_from_cold_cache(PageID& victim_id);
     void promote_to_hot_cache(std::unique_ptr<MiraPage> mira_page);
     void maybe_demote_from_hot_cache();
-    
-    // Internal versions that don't acquire locks (must be called with locks already held)
-    void insert_to_hot_cache_internal(std::unique_ptr<MiraPage> mira_page);
-    void insert_to_cold_cache_internal(std::unique_ptr<MiraPage> mira_page);
-    bool evict_from_hot_cache_internal(PageID& victim_id);
-    bool evict_from_cold_cache_internal(PageID& victim_id);
 };
 
 } // namespace bptree
